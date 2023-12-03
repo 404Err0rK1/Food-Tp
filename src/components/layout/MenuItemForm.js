@@ -10,7 +10,7 @@ export default function MenuItemForm({onSubmit,menuItem}) {
   const [description, setDescription] = useState(menuItem?.description || '');
   const [basePrice, setBasePrice] = useState(menuItem?.basePrice || '');
   const [sizes, setSizes] = useState(menuItem?.sizes || []);
-  const [category, setCategory] = useState(menuItem?.category || '');
+  const [category, setCategory] = useState();
   const [categories, setCategories] = useState([]);
   const [
     extraIngredientPrices,
@@ -21,6 +21,7 @@ export default function MenuItemForm({onSubmit,menuItem}) {
     fetch('/api/categories').then(res => {
       res.json().then(categories => {
         setCategories(categories);
+        console.log(categories);
       });
     });
   }, []);

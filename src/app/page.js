@@ -15,10 +15,10 @@ export default function Home() {
         />
         <div className="text-gray-500 max-w-md mx-auto mt-4 flex flex-col gap-4">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni minima odit recusandae. Illum ipsa non repudiandae? Eum ipsam iste quos suscipit tempora? Aperiam esse fugiat inventore laboriosam officiis quam rem!
+          Going to the restaurant is a great opportunity to enjoy the best foods which are made by the best chefs. We can not only enjoy our traditional food but also other countries’ food. One of my favorite restaurants is a Korean restaurant called TPFOOD. I used to come here twice with my coworker and I was impressed a lot. I am a Korean foodaholic so my friends recommended this restaurant for me. It is located on the 7th floor of a shopping mall in the Cong Hoa District in HCM.
           </p>
-          <p>At consectetur delectus ducimus est facere iure molestias obcaecati quaerat vitae voluptate? Aspernatur dolor explicabo iste minus molestiae pariatur provident quibusdam saepe?</p>
-          <p>Laborum molestias neque nulla obcaecati odio quia quod reprehenderit sit vitae voluptates? Eos, tenetur.</p>
+          <p>This is a buffet restaurant so I can taste all kinds of Korean foods here. They were all hot and spicy but I felt really satisfied with the quality of the food. Because this restaurant let us serve free soft drinks ourselves, so I didn’t have to worry about enjoying spicy food. What I love about this restaurant was the way the staff helped us to mix the sauces. They were kind and friendly so I felt welcomed here. The price was affordable and not too expensive for the tasty food. That’s why this restaurant is always crowded. If you are into Korean food, this restaurant will not disappoint you. </p>
+          
         </div>
       </section>
       <section className="text-center my-8" id="contact">

@@ -16,7 +16,7 @@ function AuthLinks({ status, userName }) {
         </Link>
         <button
           onClick={() => signOut()}
-          className="bg-primary rounded-full text-white px-8 py-2">
+          className="bg-green-700 rounded-full text-white px-8 py-2">
           Logout
         </button>
       </>
@@ -25,8 +25,8 @@ function AuthLinks({ status, userName }) {
   if (status === 'unauthenticated') {
     return (
       <>
-        <Link href={'/login'}>Login</Link>
-        <Link href={'/register'} className="bg-primary rounded-full text-white px-8 py-2">
+        <Link href={'/login'} className="bg-green-700 rounded-full text-white px-8 py-2">Login</Link>
+        <Link href={'/register'} className="bg-green-700 rounded-full text-white px-8 py-2">
           Register
         </Link>
       </>
@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <header>
       <div className="flex items-center md:hidden justify-between">
-        <Link className="text-primary font-semibold text-2xl" href={'/'}>
+        <Link className="text-green-700 font-bremlin text-2xl" href={'/'}>
           FOOD TP
         </Link>
         <div className="flex gap-8 items-center">
@@ -80,9 +80,9 @@ export default function Header() {
       )}
       <div className="hidden md:flex items-center justify-between">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
-          <Link className="text-primary font-semibold text-2xl flex flex-row gap-1 justify-center items-center" href={'/'}>
+          <Link className="text-green-700 font-semibold text-2xl flex flex-row gap-1 justify-center items-center" href={'/'}>
             <Image
-              src='/mixer.png'
+              src='/Chef-amico.png'
               alt="logo"
               width={70}
               height={70}
@@ -91,10 +91,10 @@ export default function Header() {
               Food TP
             </span>
           </Link>
-          <Link className="hover:text-orange-500" href={'/'}>Home</Link>
-          <Link className="hover:text-orange-500" href={'/menu'}>Menu</Link>
-          <Link className="hover:text-orange-500" href={'/#about'}>About</Link>
-          <Link className="hover:text-orange-500" href={'/#contact'}>Contact</Link>
+          <Link className="hover:text-green-700" href={'/'}>Home</Link>
+          <Link className="hover:text-green-700" href={'/menu'}>Menu</Link>
+          <Link className="hover:text-green-700" href={'/#about'}>About</Link>
+          <Link className="hover:text-green-700" href={'/#contact'}>Contact</Link>
         </nav>
         <nav className="flex items-center gap-4 text-gray-500 font-semibold">
           <AuthLinks status={status} userName={userName} />

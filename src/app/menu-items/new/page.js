@@ -17,6 +17,7 @@ export default function NewMenuItemPage() {
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
+    // ======= POST data item ======
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch('/api/menu-items', {
         method: 'POST',

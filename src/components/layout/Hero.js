@@ -17,7 +17,7 @@ export default function Hero() {
         I really like the way they present this dish creatively. That is why I would highly recommend this dish to all my friends and family. It is always a pleasure to enjoy this dish at FoodTP Restaurant.
         </p>
         <div className="flex gap-4 text-sm">
-          <button className="flex justify-center bg-primary uppercase flex items-center gap-2 text-white px-4 py-2 rounded-full">
+          <button className="flex justify-center bg-green-700 uppercase flex items-center gap-2 text-white px-4 py-2 rounded-full">
             Order now
             <Right />
           </button>
