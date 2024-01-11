@@ -21,7 +21,6 @@ export default function MenuItemForm({onSubmit,menuItem}) {
     fetch('/api/categories').then(res => {
       res.json().then(categories => {
         setCategories(categories);
-        console.log(categories);
       });
     });
   }, []);

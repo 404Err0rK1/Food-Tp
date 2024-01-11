@@ -1,19 +1,19 @@
 'use client';
 import AddressInputs from "@/components/layout/AddressInputs";
 import EditableImage from "@/components/layout/EditableImage";
-import {useProfile} from "@/components/UseProfile";
-import {useState} from "react";
+import { useProfile } from "@/components/UseProfile";
+import { useEffect, useState } from "react";
 
-export default function UserForm({user,onSave}) {
+export default function UserForm({ user, onSave }) {
   const [userName, setUserName] = useState(user?.name || '');
-  const [image, setImage] = useState(user?.image || '');
+  const [image, setImage] = useState(user?.image);
   const [phone, setPhone] = useState(user?.phone || '');
   const [streetAddress, setStreetAddress] = useState(user?.streetAddress || '');
   const [postalCode, setPostalCode] = useState(user?.postalCode || '');
   const [city, setCity] = useState(user?.city || '');
   const [country, setCountry] = useState(user?.country || '');
   const [admin, setAdmin] = useState(user?.admin || false);
-  const {data:loggedInUserData} = useProfile();
+  const { data: loggedInUserData } = useProfile();
 
   function handleAddressChange(propName, value) {
     if (propName === 'phone') setPhone(value);
@@ -22,7 +22,9 @@ export default function UserForm({user,onSave}) {
     if (propName === 'city') setCity(value);
     if (propName === 'country') setCountry(value);
   }
-
+  useEffect(() => { 
+    setImage(user?.image)
+    console.log(image); }, [])
   return (
     <div className="md:flex gap-4">
       <div>
@@ -34,7 +36,7 @@ export default function UserForm({user,onSave}) {
         className="grow"
         onSubmit={ev =>
           onSave(ev, {
-            name:userName, image, phone, admin,
+            name: userName, image, phone, admin,
             streetAddress, city, country, postalCode,
           })
         }
@@ -54,7 +56,7 @@ export default function UserForm({user,onSave}) {
           placeholder={'email'}
         />
         <AddressInputs
-          addressProps={{phone, streetAddress, postalCode, city, country}}
+          addressProps={{ phone, streetAddress, postalCode, city, country }}
           setAddressProp={handleAddressChange}
         />
         {loggedInUserData.admin && (

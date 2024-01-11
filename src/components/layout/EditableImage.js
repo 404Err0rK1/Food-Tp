@@ -78,7 +78,7 @@ export default function EditableImage({ link, setLink }) {
   }
   useEffect(() => {
    setLink(imgUrl)
-  }, [imgUrl])
+  }, [link,imgUrl])
   return (
     <>
       {link && (
