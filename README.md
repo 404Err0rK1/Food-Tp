@@ -1,5 +1,7 @@
-# Ecommerce-shop-apple
-The website is a sleek, user-friendly e-commerce platform dedicated to selling Apple’s Macbook line of laptops. The homepage greets visitors with a clean, minimalist design that highlights the latest Macbook models in high-resolution images. Each product is accompanied by a brief description, highlighting key features such as the processor speed, display quality, and battery life.<br><br>The navigation bar at the top provides easy access to different categories, such as ‘Macbook Air’, ‘Macbook Pro’, and ‘Accessories’. Each category page presents a grid of products with filters on the side, allowing users to sort by price, popularity, or release date.<br><br>Clicking on a product leads to a detailed product page with more in-depth specifications, customer reviews, and a gallery of images showcasing the product from various angles. There’s also an ‘Add to Cart’ button for a seamless shopping experience.<br><br>The website also features a secure checkout process, multiple payment options, and customer support via live chat and email. It’s a one-stop-shop for anyone looking to purchase a Macbook.
+# Food Ordering
+Build a specific e-commerce website specializing in the trade of Apple technology products, including components and features such as: 
+💻 Admin: authentication, products management, categories management, security.
+💻 Client:  featured products, latest products, add-to-card, stripe checkout, show orders, all products page, single product page.
 
 
 # 💻 Tech:
