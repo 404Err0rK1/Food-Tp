@@ -1,6 +1,8 @@
 # Food Ordering
 Build a specific e-commerce website specializing in the trade of Apple technology products, including components and features such as: 
+
 💻 Admin: authentication, products management, categories management, security.
+
 💻 Client:  featured products, latest products, add-to-card, stripe checkout, show orders, all products page, single product page.
 
 
