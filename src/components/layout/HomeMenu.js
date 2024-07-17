@@ -16,14 +16,7 @@ export default function HomeMenu() {
   }, []);
   return (
     <section className="">
-      <div className="absolute left-0 right-0 w-full justify-start">
-        <div className="absolute left-0 -top-[100px] text-left -z-10">
-          <Image src={'/Hamburger.gif'} width={400} height={400}  alt={'sallad'}/>
-        </div>
-        <div className="absolute -top-[100px] right-0 -z-10">
-          <Image src={'/Hamburger-pana.svg'} width={400} height={400} alt={'sallad'} />
-        </div>
-      </div>
+     
       <div className="text-center mb-4">
         <SectionHeaders
           subHeader={'check out'}
