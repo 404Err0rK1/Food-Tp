@@ -1,5 +1,6 @@
 # Food Ordering
-Build a specific e-commerce website specializing in the trade of Apple technology products, including components and features such as: 
+Building a food ordering website, including components and features: a homepage, authentication, profile editing page, admin panel
+(categories, menu items, users), listing products, menu items, and cart page 
 
 💻 Admin: authentication, products management, categories management, security.
 
