@@ -5,10 +5,12 @@ import mongoose from "mongoose";
 export async function POST(req) {
   mongoose.connect(process.env.MONGO_URL);
   const {name} = await req.json();
+  
   if (await isAdmin()) {
     const categoryDoc = await Category.create({name});
     return Response.json(categoryDoc);
   } else {
+    console.log(name);
     return Response.json({});
   }
 }

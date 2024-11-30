@@ -8,9 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#f13a01',
+        primary: '#15803D',
       },
     },
+    screens: {
+      'sm': '640px',
+      'md': '860px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    }
   },
   plugins: [],
 }

@@ -10,7 +10,7 @@ export default function UserTabs({isAdmin}) {
         className={path === '/profile' ? 'active' : ''}
         href={'/profile'}
       >
-        Profile
+        Hồ sơ
       </Link>
       {isAdmin && (
         <>
@@ -18,19 +18,19 @@ export default function UserTabs({isAdmin}) {
             href={'/categories'}
             className={path === '/categories' ? 'active' : ''}
           >
-            Categories
+            Loại
           </Link>
           <Link
             href={'/menu-items'}
             className={path.includes('menu-items') ? 'active' : ''}
           >
-            Menu Items
+            Mục thực đơn
           </Link>
           <Link
             className={path.includes('/users') ? 'active' : ''}
             href={'/users'}
           >
-            Users
+            Người dùng
           </Link>
         </>
       )}
@@ -38,7 +38,7 @@ export default function UserTabs({isAdmin}) {
         className={path === '/orders' ? 'active' : ''}
         href={'/orders'}
       >
-        Orders
+        Đơn hàng
       </Link>
     </div>
   );

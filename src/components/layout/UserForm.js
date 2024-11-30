@@ -42,10 +42,10 @@ export default function UserForm({ user, onSave }) {
         }
       >
         <label>
-          First and last name
+          Họ và Tên
         </label>
         <input
-          type="text" placeholder="First and last name"
+          type="text" placeholder="Họ và tên"
           value={userName} onChange={ev => setUserName(ev.target.value)}
         />
         <label>Email</label>
@@ -67,11 +67,11 @@ export default function UserForm({ user, onSave }) {
                 checked={admin}
                 onChange={ev => setAdmin(ev.target.checked)}
               />
-              <span>Admin</span>
+              <span>Quản trị viên</span>
             </label>
           </div>
         )}
-        <button type="submit">Save</button>
+        <button type="submit">Lưu</button>
       </form>
     </div>
   );

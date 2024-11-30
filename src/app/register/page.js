@@ -31,42 +31,42 @@ export default function RegisterPage() {
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-4">
-        Register
+        Đăng ký
       </h1>
       {userCreated && (
         <div className="my-4 text-center">
-          User created.<br />
-          Now you can{' '}
-          <Link className="underline" href={'/login'}>Login &raquo;</Link>
+          Tài khoản người dùng đã tạo<br />
+          Hiện tại, bạn có thể{' '}
+          <Link className="underline" href={'/login'}>Đăng nhập &raquo;</Link>
         </div>
       )}
       {error && (
         <div className="my-4 text-center">
-          An error has occurred.<br />
-          Please try again later
+          Đã xảy ra lỗi.<br />
+          Vui lòng thử lại sau
         </div>
       )}
       <form className="block max-w-xs mx-auto" onSubmit={handleFormSubmit}>
-        <input type="email" placeholder="email" value={email}
+        <input type="email" placeholder="Email" value={email}
                disabled={creatingUser}
                onChange={ev => setEmail(ev.target.value)} />
-        <input type="password" placeholder="password" value={password}
+        <input type="password" placeholder="Mật khâu" value={password}
                disabled={creatingUser}
                 onChange={ev => setPassword(ev.target.value)}/>
         <button type="submit" disabled={creatingUser}>
-          Register
+          Đăng ký
         </button>
         <div className="my-4 text-center text-gray-500">
-          or login with provider
+          hoặc đăng nhập với dịch vụ
         </div>
         <button
           onClick={() => signIn('google', {callbackUrl:'/'})}
           className="flex gap-4 justify-center">
           <Image src={'/google.png'} alt={''} width={24} height={24} />
-          Login with google
+          Đăng nhập bằng google
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
-          Existing account?{' '}
+          Bạn đã có tài khoản?{' '}
           <Link className="underline" href={'/login'}>Login here &raquo;</Link>
         </div>
       </form>

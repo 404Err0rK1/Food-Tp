@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export function useProfile() {
   const [data, setData] = useState(false);
@@ -9,10 +9,9 @@ export function useProfile() {
       response.json().then(data => {
         setData(data);
         setLoading(false);
-        console.log(data)
       });
     })
   }, []);
 
-  return {loading, data};
+  return { loading, data };
 }

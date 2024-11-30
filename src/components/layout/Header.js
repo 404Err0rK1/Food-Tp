@@ -17,7 +17,7 @@ function AuthLinks({ status, userName }) {
         <button
           onClick={() => signOut()}
           className="bg-green-700 rounded-full text-white px-8 py-2">
-          Logout
+          Đăng xuất
         </button>
       </>
     );
@@ -25,9 +25,9 @@ function AuthLinks({ status, userName }) {
   if (status === 'unauthenticated') {
     return (
       <>
-        <Link href={'/login'} className="bg-green-700 rounded-full text-white px-8 py-2">Login</Link>
-        <Link href={'/register'} className="bg-green-700 rounded-full text-white px-8 py-2">
-          Register
+        <Link href={'/login'} className="bg-green-700 rounded-full text-white px-4 py-2">Đăng nhập</Link>
+        <Link href={'/register'} className="bg-green-700 rounded-full text-white px-6 py-2">
+          Đăng ký
         </Link>
       </>
     );
@@ -36,10 +36,9 @@ function AuthLinks({ status, userName }) {
 
 export default function Header() {
   const session = useSession();
-  console.log(session);//log status session
   const status = session?.status;
   const userData = session.data?.user;
-  let userName = userData?.name || userData?.email;
+  let userName = userData?.name || userData?.email.substring(0, userData.email.indexOf("@"));
   const { cartProducts } = useContext(CartContext);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   if (userName && userName.includes(' ')) {
@@ -71,10 +70,10 @@ export default function Header() {
         <div
           onClick={() => setMobileNavOpen(false)}
           className="md:hidden p-4 bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center">
-          <Link href={'/'}>Home</Link>
-          <Link href={'/menu'}>Menu</Link>
-          <Link href={'/#about'}>About</Link>
-          <Link href={'/#contact'}>Contact</Link>
+          <Link href={'/'}>Trang chủ</Link>
+          <Link href={'/menu'}>Thực đơn</Link>
+          <Link href={'/#about'}>Chúng tôi</Link>
+          <Link href={'/#contact'}>Liên hệ</Link>
           <AuthLinks status={status} userName={userName} />
         </div>
       )}
@@ -87,14 +86,14 @@ export default function Header() {
               width={70}
               height={70}
             />
-            <span className="inline-block text-2xl font-bremlin translate-y-2">
+            <span className="inline-block text-2xl font-bremlin translate-y-1">
               Food TP
             </span>
           </Link>
-          <Link className="hover:text-green-700" href={'/'}>Home</Link>
-          <Link className="hover:text-green-700" href={'/menu'}>Menu</Link>
-          <Link className="hover:text-green-700" href={'/#about'}>About</Link>
-          <Link className="hover:text-green-700" href={'/#contact'}>Contact</Link>
+          <Link className="hover:text-green-700" href={'/'}>Trang chủ</Link>
+          <Link className="hover:text-green-700" href={'/menu'}>Thực đơn</Link>
+          <Link className="hover:text-green-700" href={'/#about'}>Chúng tôi</Link>
+          <Link className="hover:text-green-700" href={'/#contact'}>Liên hệ</Link>
         </nav>
         <nav className="flex items-center gap-4 text-gray-500 font-semibold">
           <AuthLinks status={status} userName={userName} />

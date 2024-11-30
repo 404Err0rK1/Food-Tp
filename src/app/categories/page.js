@@ -20,6 +20,8 @@ export default function CategoriesPage() {
     fetch('/api/categories').then(res => {
       res.json().then(categories => {
         setCategories(categories);
+        console.log(categories);
+        
       });
     });
   }

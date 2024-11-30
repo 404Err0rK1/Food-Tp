@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/libs/mongoConnect.js"  ],
   "exclude": [
     "node_modules"
   ]
