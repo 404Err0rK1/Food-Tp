@@ -10,6 +10,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter"
 
 
 export const authOptions = {
+  secret: process.env.SECRET,
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
@@ -43,7 +44,6 @@ export const authOptions = {
       }
     })
   ],
-  secret: process.env.SECRET,
 
 };
 
