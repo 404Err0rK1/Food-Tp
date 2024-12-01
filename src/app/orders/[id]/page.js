@@ -54,15 +54,15 @@ export default function OrderPage() {
               <CartProduct key={product._id} product={product} />
             ))}
             <div className="text-right py-2 text-gray-500">
-              Giá thực đơn:
-              <span className="text-black font-bold inline-block w-8">{subtotal}&nbps;&#8363;</span>
+              Giá thực đơn:&nbsp;
+              <span className="text-black font-bold inline-block w-8 whitespace-nowrap">{subtotal} &#8363;</span>
               <br />
-              Phí vận chuyển:
-              <span className="text-black font-bold inline-block w-8">10.000&nbps;&#8363;</span>
+              Phí vận chuyển:&nbsp;
+              <span className="text-black font-bold inline-block w-8 whitespace-nowrap">10.000 &#8363;</span>
               <br />
-              Thanh toán:
-              <span className="text-black font-bold inline-block w-8">
-                {(subtotal + 10000).toLocaleString('vi-VN')}&nbps;&#8363;
+              Thanh toán: &nbsp;
+              <span className="text-black font-bold inline-block w-8 whitespace-nowrap">
+                {(subtotal + 10000).toLocaleString('vi-VN')} &#8363;
               </span>
             </div>
           </div>
