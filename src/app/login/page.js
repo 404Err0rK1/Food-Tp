@@ -19,7 +19,7 @@ export default function LoginPage() {
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-4">
-        Login
+        Đăng nhập
       </h1>
       <form className="max-w-xs mx-auto" onSubmit={handleFormSubmit}>
         <input type="email" name="email" placeholder="email" value={email}
