@@ -10,7 +10,7 @@ export async function POST(req) {
     const categoryDoc = await Category.create({name});
     return Response.json(categoryDoc);
   } else {
-    console.log(name);
+    // console.log(name);
     return Response.json({});
   }
 }

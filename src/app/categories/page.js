@@ -20,7 +20,7 @@ export default function CategoriesPage() {
     fetch('/api/categories').then(res => {
       res.json().then(categories => {
         setCategories(categories);
-        console.log(categories);
+        // console.log(categories);
         
       });
     });
@@ -48,10 +48,10 @@ export default function CategoriesPage() {
     });
     await toast.promise(creationPromise, {
       loading: editedCategory
-                 ? 'Updating category...'
-                 : 'Creating your new category...',
-      success: editedCategory ? 'Category updated' : 'Category created',
-      error: 'Error, sorry...',
+                 ? 'Đang cập nhật danh mục...'
+                 : 'Tạo danh mục mới...',
+      success: editedCategory ? 'Đã cập nhật danh mục' : 'Đã tạo danh mục',
+      error: 'Đã xảy ra lỗi...',
     });
   }
 
@@ -68,20 +68,20 @@ export default function CategoriesPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Deleting...',
-      success: 'Deleted',
-      error: 'Error',
+      loading: 'Đang xóa...',
+      success: 'Đã xóa',
+      error: 'Lỗi',
     });
 
     fetchCategories();
   }
 
   if (profileLoading) {
-    return 'Loading user info...';
+    return 'Đang tải thông tin...';
   }
 
   if (!profileData.admin) {
-    return 'Not an admin';
+    return 'Không phải là quản trị viên';
   }
 
   return (
@@ -91,7 +91,7 @@ export default function CategoriesPage() {
         <div className="flex gap-2 items-end">
           <div className="grow">
             <label>
-              {editedCategory ? 'Update category' : 'New category name'}
+              {editedCategory ? 'Cập nhập danh mục' : 'Tên danh mục mới'}
               {editedCategory && (
                 <>: <b>{editedCategory.name}</b></>
               )}
@@ -102,8 +102,8 @@ export default function CategoriesPage() {
             />
           </div>
           <div className="pb-2 flex gap-2">
-            <button className="border border-primary" type="submit">
-              {editedCategory ? 'Update' : 'Create'}
+            <button className="border border-primary whitespace-nowrap" type="submit">
+              {editedCategory ? 'Cập nhập' : 'Lưu'}
             </button>
             <button
               type="button"
@@ -111,13 +111,13 @@ export default function CategoriesPage() {
                 setEditedCategory(null);
                 setCategoryName('');
               }}>
-              Cancel
+              Hủy
             </button>
           </div>
         </div>
       </form>
       <div>
-        <h2 className="mt-8 text-sm text-gray-500">Existing categories</h2>
+        <h2 className="mt-8 text-sm text-gray-500">Danh sách danh mục</h2>
         {categories?.length > 0 && categories.map(c => (
           <div
             key={c._id}
@@ -127,15 +127,16 @@ export default function CategoriesPage() {
             </div>
             <div className="flex gap-1">
               <button type="button"
+              className="whitespace-nowrap"
                       onClick={() => {
                         setEditedCategory(c);
                         setCategoryName(c.name);
                       }}
               >
-                Edit
+                Chỉnh sửa
               </button>
               <DeleteButton
-                label="Delete"
+                label="Xóa"
                 onDelete={() => handleDeleteClick(c._id)} />
             </div>
           </div>

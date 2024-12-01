@@ -34,18 +34,18 @@ export default function EditUserPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Saving user...',
-      success: 'User saved',
-      error: 'An error has occurred while saving the user',
+      loading: 'Đang lưu người dùng...',
+      success: 'Đã lưu người dùng',
+      error: 'Đã xảy ra lỗi khi lưu người dùng',
     });
   }
 
   if (loading) {
-    return 'Loading user profile...';
+    return 'Đang tải thông tin...';
   }
 
   if (!data.admin) {
-    return 'Not an admin';
+    return 'Không phải quản trị viên';
   }
 
   return (

@@ -18,13 +18,13 @@ export default function UserTabs({isAdmin}) {
             href={'/categories'}
             className={path === '/categories' ? 'active' : ''}
           >
-            Loại
+            Danh mục
           </Link>
           <Link
             href={'/menu-items'}
             className={path.includes('menu-items') ? 'active' : ''}
           >
-            Mục thực đơn
+            Thực đơn
           </Link>
           <Link
             className={path.includes('/users') ? 'active' : ''}

@@ -1,19 +1,29 @@
 'use client';
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import MenuItem from "@/components/menu/MenuItem";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function MenuPage() {
   const [categories, setCategories] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
     fetch('/api/categories').then(res => {
-      res.json().then(categories => setCategories(categories))
+      res.json().then(categories => {
+        // console.log(categories); // check: res -> categories
+        setCategories(categories)
+      })
     });
+
     fetch('/api/menu-items').then(res => {
-      res.json().then(menuItems => setMenuItems(menuItems));
+      res.json().then(menuItems => {
+        // console.log(menuItems); // check: res -> menuItems
+        setMenuItems(menuItems)
+      }
+      );
     });
   }, []);
+  console.log(menuItems);
+  
   return (
     <section className="mt-8">
       {categories?.length > 0 && categories.map(c => (

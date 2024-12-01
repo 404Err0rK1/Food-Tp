@@ -30,7 +30,7 @@ export default function OrdersPage() {
       <UserTabs isAdmin={profile.admin} />
       <div className="mt-8">
         {loadingOrders && (
-          <div>Loading orders...</div>
+          <div>Đang tải đơn hàng...</div>
         )}
         {orders?.length > 0 && orders.map(order => (
           <div
@@ -40,9 +40,9 @@ export default function OrdersPage() {
               <div>
                 <div className={
                   (order.paid ? 'bg-green-500' : 'bg-red-400')
-                  + ' p-2 rounded-md text-white w-24 text-center'
+                  + ' p-2 rounded-md text-white w-24 text-center whitespace-nowrap min-w-fit'
                 }>
-                  {order.paid ? 'Paid' : 'Not paid'}
+                  {order.paid ? 'Đã thanh toán' : 'Chưa thanh toán'}
                 </div>
               </div>
               <div className="grow">
@@ -57,7 +57,7 @@ export default function OrdersPage() {
             </div>
             <div className="justify-end flex gap-2 items-center whitespace-nowrap">
               <Link href={"/orders/"+order._id} className="button">
-                Show order
+                Chi tiết đơn hàng
               </Link>
             </div>
           </div>

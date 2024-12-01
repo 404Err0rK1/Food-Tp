@@ -1,22 +1,21 @@
 'use client';
 import DeleteButton from "@/components/DeleteButton";
 import Left from "@/components/icons/Left";
-import EditableImage from "@/components/layout/EditableImage";
 import MenuItemForm from "@/components/layout/MenuItemForm";
 import UserTabs from "@/components/layout/UserTabs";
-import {useProfile} from "@/components/UseProfile";
+import { useProfile } from "@/components/UseProfile";
 import Link from "next/link";
-import {redirect, useParams} from "next/navigation";
-import {useEffect, useState} from "react";
+import { redirect, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function EditMenuItemPage() {
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [menuItem, setMenuItem] = useState(null);
   const [redirectToItems, setRedirectToItems] = useState(false);
-  const {loading, data} = useProfile();
+  const { loading, data } = useProfile();
 
   useEffect(() => {
     fetch('/api/menu-items').then(res => {
@@ -29,7 +28,7 @@ export default function EditMenuItemPage() {
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
-    data = {...data, _id:id};
+    data = { ...data, _id: id };
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch('/api/menu-items', {
         method: 'PUT',
@@ -43,9 +42,9 @@ export default function EditMenuItemPage() {
     });
 
     await toast.promise(savingPromise, {
-      loading: 'Saving this tasty item',
-      success: 'Saved',
-      error: 'Error',
+      loading: 'Lưu lại món ngon này',
+      success: 'Đã lưu',
+      error: 'Lỗi',
     });
 
     setRedirectToItems(true);
@@ -53,7 +52,7 @@ export default function EditMenuItemPage() {
 
   async function handleDeleteClick() {
     const promise = new Promise(async (resolve, reject) => {
-      const res = await fetch('/api/menu-items?_id='+id, {
+      const res = await fetch('/api/menu-items?_id=' + id, {
         method: 'DELETE',
       });
       if (res.ok)
@@ -63,9 +62,9 @@ export default function EditMenuItemPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Deleting...',
-      success: 'Deleted',
-      error: 'Error',
+      loading: 'Đang xóa...',
+      success: 'Đã xóa',
+      error: 'Lỗi',
     });
 
     setRedirectToItems(true);
@@ -76,11 +75,11 @@ export default function EditMenuItemPage() {
   }
 
   if (loading) {
-    return 'Loading user info...';
+    return 'Đang tải thông tin...';
   }
 
   if (!data.admin) {
-    return 'Not an admin.';
+    return 'bạn không phải admin.';
   }
 
   return (
@@ -89,14 +88,14 @@ export default function EditMenuItemPage() {
       <div className="max-w-2xl mx-auto mt-8">
         <Link href={'/menu-items'} className="button">
           <Left />
-          <span>Show all menu items</span>
+          <span>Hiển thị tất cả món ăn</span>
         </Link>
       </div>
-      <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit} />
-      <div className="max-w-md mx-auto mt-2">
-        <div className="max-w-xs ml-auto pl-4">
+      <div className="">
+        <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit} />
+        <div className="mt-4">
           <DeleteButton
-            label="Delete this menu item"
+            label="Xóa món ăn"
             onDelete={handleDeleteClick}
           />
         </div>

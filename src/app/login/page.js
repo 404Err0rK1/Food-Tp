@@ -28,14 +28,14 @@ export default function LoginPage() {
         <input type="password" name="password" placeholder="password" value={password}
                disabled={loginInProgress}
                onChange={ev => setPassword(ev.target.value)}/>
-        <button disabled={loginInProgress} type="submit">Login</button>
+        <button disabled={loginInProgress} type="submit">Đăng nhập</button>
         <div className="my-4 text-center text-gray-500">
-          or login with provider
+        hoặc đăng nhập với dịch vụ
         </div>
         <button type="button" onClick={() => signIn('google', {callbackUrl: '/'})}
                 className="flex gap-4 justify-center">
           <Image src={'/google.png'} alt={''} width={24} height={24} />
-          Login with google
+          Đăng nhập bằng google
         </button>
       </form>
     </section>

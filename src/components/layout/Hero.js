@@ -6,8 +6,8 @@ export default function Hero() {
     <section className="hero md:mt-4">
       <div className="py-8 md:py-12">
         <h1 className="text-4xl font-semibold text-green-600">
-          <div className="text-black text-[2rem]">Khám phá hương vị Việt<br />
-            <div className="text-orange-500 text-[1.8rem] text-end">chạm đến trái tim.</div> </div>
+          <div className="text-[4rem] font-viet-co-trang line leading-[3rem] text-green-600">Khám phá <div className="text-center text-[3rem]">hương vị Việt</div>
+            <div className="text-green-900 text-[2.2rem] text-start">chạm đến trái tim.</div> </div>
 
         </h1>
         <p className="my-6 text-gray-500 text-sm">

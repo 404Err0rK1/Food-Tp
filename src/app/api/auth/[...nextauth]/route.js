@@ -10,8 +10,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter"
 
 
 export const authOptions = {
-  secret: process.env.SECRET,
-  // adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -25,13 +24,18 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        // if(credentials){
+        // console.log(credentials) //check credentials
+        // }
         const email = credentials?.email;
         const password = credentials?.password;
 
         mongoose.connect(process.env.MONGO_URL);
         const user = await User.findOne({ email });
+        
         const passwordOk = user && bcrypt.compareSync(password, user.password);
         if (passwordOk) {
+          console.log(user)
           return user;
         }
 
@@ -39,6 +43,8 @@ export const authOptions = {
       }
     })
   ],
+  secret: process.env.SECRET,
+
 };
 
 export async function isAdmin() {
@@ -50,7 +56,6 @@ export async function isAdmin() {
     return false;
   }
   const userInfo = await UserInfo.findOne({ email: userEmail });
-  console.log(userEmail);
   if (!userInfo) {
 
     return false;

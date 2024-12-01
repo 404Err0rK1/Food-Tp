@@ -30,9 +30,9 @@ export default function NewMenuItemPage() {
     });
 
     await toast.promise(savingPromise, {
-      loading: 'Saving this tasty item',
-      success: 'Saved',
-      error: 'Error',
+      loading: 'Lưu lại món ngon này',
+      success: 'Đã lưu',
+      error: 'Lỗi',
     });
 
     setRedirectToItems(true);
@@ -56,7 +56,7 @@ export default function NewMenuItemPage() {
       <div className="max-w-2xl mx-auto mt-8">
         <Link href={'/menu-items'} className="button">
           <Left />
-          <span>Show all menu items</span>
+          <span>Hiển thị tất các món ăn</span>
         </Link>
       </div>
       <MenuItemForm menuItem={null} onSubmit={handleFormSubmit} />

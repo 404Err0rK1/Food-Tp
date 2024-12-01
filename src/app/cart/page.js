@@ -17,7 +17,7 @@ export default function CartPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (window.location.href.includes('canceled=1')) {
-        toast.error('Payment failed 😔');
+        toast.error('Thanh toán không thành công!');
       }
     }
   }, []);
@@ -66,9 +66,9 @@ export default function CartPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Preparing your order...',
-      success: 'Redirecting to payment...',
-      error: 'Something went wrong... Please try again later',
+      loading: 'Đang chuẩn bị thưc đơn ...',
+      success: 'Chuyển hướng đến thanh toán...',
+      error: 'Đã xảy ra lỗi... Vui lòng thử lại sau',
     })
   }
 
@@ -76,7 +76,7 @@ export default function CartPage() {
     return (
       <section className="mt-8 text-center">
         <SectionHeaders mainHeader="Cart" />
-        <p className="mt-4">Your shopping cart is empty 😔</p>
+        <p className="mt-4">Giỏ hàng của bạn trống</p>
       </section>
     );
   }
@@ -84,30 +84,31 @@ export default function CartPage() {
   return (
     <section className="mt-8">
       <div className="text-center">
-        <SectionHeaders mainHeader="Cart" />
+        <SectionHeaders mainHeader="Đơn hàng" />
       </div>
       <div className="mt-8 grid gap-8 grid-cols-2">
         <div>
           {cartProducts?.length === 0 && (
-            <div>No products in your shopping cart</div>
+            <div>Không có thực đơn nào trong giỏ hàng của bạn</div>
           )}
           {cartProducts?.length > 0 && cartProducts.map((product, index) => (
             <CartProduct
               key={index}
+              index={index}
               product={product}
               onRemove={removeCartProduct}
             />
           ))}
           <div className="py-2 pr-16 flex justify-end items-center">
             <div className="text-gray-500">
-              Subtotal:<br />
-              Delivery:<br />
-              Total:
+              Giá:<br />
+              Phí vận chuyển:<br />
+              Thanh toán:
             </div>
             <div className="font-semibold pl-2 text-right">
-              ${subtotal}<br />
-              $5<br />
-              ${subtotal + 5}
+              {subtotal.toLocaleString('vi-VN')}&nbsp;&#8363;<br />
+              10.000&nbsp;&nbsp;&#8363;<br />
+              {(subtotal + 10000).toLocaleString("vi-VN")}&nbsp;&#8363;
             </div>
           </div>
         </div>
@@ -118,7 +119,7 @@ export default function CartPage() {
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit">Pay ${subtotal+5}</button>
+            <button type="submit">Pay ${(subtotal+10000).toLocaleString('vi-VN')}</button>
           </form>
         </div>
       </div>

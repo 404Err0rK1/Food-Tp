@@ -2,9 +2,9 @@ import Plus from "@/components/icons/Plus";
 import Trash from "@/components/icons/Trash";
 import EditableImage from "@/components/layout/EditableImage";
 import MenuItemPriceProps from "@/components/layout/MenuItemPriceProps";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-export default function MenuItemForm({onSubmit,menuItem}) {
+export default function MenuItemForm({ onSubmit, menuItem }) {
   const [image, setImage] = useState(menuItem?.image || '');
   const [name, setName] = useState(menuItem?.name || '');
   const [description, setDescription] = useState(menuItem?.description || '');
@@ -29,50 +29,57 @@ export default function MenuItemForm({onSubmit,menuItem}) {
     <form
       onSubmit={ev =>
         onSubmit(ev, {
-          image,name,description,basePrice,sizes,extraIngredientPrices,category,
+          image, name, description, basePrice, sizes, extraIngredientPrices, category,
         })
       }
       className="mt-8 max-w-2xl mx-auto">
       <div
         className="md:grid items-start gap-4"
-        style={{gridTemplateColumns:'.3fr .7fr'}}>
+        style={{ gridTemplateColumns: '.3fr .7fr' }}>
         <div>
           <EditableImage link={image} setLink={setImage} />
         </div>
         <div className="grow">
-          <label>Item name</label>
+          <label>Tên món ăn</label>
           <input
             type="text"
             value={name}
             onChange={ev => setName(ev.target.value)}
           />
-          <label>Description</label>
+          <label>Thông tin món ăn</label>
           <input
             type="text"
             value={description}
             onChange={ev => setDescription(ev.target.value)}
           />
-          <label>Category</label>
+          <label>Danh mục</label>
           <select value={category} onChange={ev => setCategory(ev.target.value)}>
             {categories?.length > 0 && categories.map(c => (
               <option key={c._id} value={c._id}>{c.name}</option>
             ))}
           </select>
-          <label>Base price</label>
+          <label>Giá</label>
           <input
             type="text"
             value={basePrice}
-            onChange={ev => setBasePrice(ev.target.value)}
+            onChange={ev => {
+              let value = ev.target.value.replace(/\D/g, '')
+              value = Number(value).toLocaleString("vi-VN")
+              console.log(value);
+
+              setBasePrice(value)
+            }
+            }
           />
-          <MenuItemPriceProps name={'Sizes'}
-                              addLabel={'Add item size'}
-                              props={sizes}
-                              setProps={setSizes} />
-          <MenuItemPriceProps name={'Extra ingredients'}
-                              addLabel={'Add ingredients prices'}
-                              props={extraIngredientPrices}
-                              setProps={setExtraIngredientPrices}/>
-          <button type="submit">Save</button>
+          <MenuItemPriceProps name={'Kích thước khẩu phần'}
+            addLabel={'Thêm kích thước'}
+            props={sizes}
+            setProps={setSizes} />
+          <MenuItemPriceProps name={'Thêm khẩu phần'}
+            addLabel={'Thêm khẩu phần bổ sung'}
+            props={extraIngredientPrices}
+            setProps={setExtraIngredientPrices} />
+          <button type="submit">Lưu</button>
         </div>
       </div>
     </form>

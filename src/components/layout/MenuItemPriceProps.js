@@ -28,7 +28,7 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
   }
 
   return (
-    <div className="bg-gray-200 p-2 rounded-md mb-2">
+    <div className="bg-green-100 p-2 rounded-md mb-2">
       <button
         onClick={() => setIsOpen(prev => !prev)}
         className="inline-flex p-1 border-0 justify-start"
@@ -46,16 +46,16 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
         {props?.length > 0 && props.map((size,index) => (
           <div key={index} className="flex items-end gap-2">
             <div>
-              <label>Name</label>
+              <label>Tên</label>
               <input type="text"
-                     placeholder="Size name"
+                     placeholder="Kích thước khẩu phần"
                      value={size.name}
                      onChange={ev => editProp(ev, index, 'name')}
               />
             </div>
             <div>
-              <label>Extra price</label>
-              <input type="text" placeholder="Extra price"
+              <label>Giá</label>
+              <input type="text" placeholder="Giá thêm"
                      value={size.price}
                      onChange={ev => editProp(ev, index, 'price')}
               />

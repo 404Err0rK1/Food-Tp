@@ -3,7 +3,6 @@ import MenuItemTile from "@/components/menu/MenuItemTile";
 import Image from "next/image";
 import {useContext, useState} from "react";
 import FlyingButton from "react-flying-item";
-import toast from "react-hot-toast";
 
 export default function MenuItem(menuItem) {
   const {
@@ -18,7 +17,7 @@ export default function MenuItem(menuItem) {
   const {addToCart} = useContext(CartContext);
 
   async function handleAddToCartButtonClick() {
-    console.log('add to cart');
+    // console.log('add to cart');
     const hasOptions = sizes.length > 0 || extraIngredientPrices.length > 0;
     if (hasOptions && !showPopup) {
       setShowPopup(true);
@@ -26,7 +25,7 @@ export default function MenuItem(menuItem) {
     }
     addToCart(menuItem, selectedSize, selectedExtras);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('hiding popup');
+    // console.log('hiding popup');
     setShowPopup(false);
   }
   function handleExtraThingClick(ev, extraThing) {
@@ -73,7 +72,7 @@ export default function MenuItem(menuItem) {
               </p>
               {sizes?.length > 0 && (
                 <div className="py-2">
-                  <h3 className="text-center text-gray-700">Pick your size</h3>
+                  <h3 className="text-center text-gray-700">Chọn kích thước</h3>
                   {sizes.map(size => (
                     <label
                       key={size._id}
@@ -90,7 +89,7 @@ export default function MenuItem(menuItem) {
               )}
               {extraIngredientPrices?.length > 0 && (
                 <div className="py-2">
-                  <h3 className="text-center text-gray-700">Any extras?</h3>
+                  <h3 className="text-center text-gray-700">Bất kỳ bổ sung?</h3>
                   {extraIngredientPrices.map(extraThing => (
                     <label
                       key={extraThing._id}
@@ -100,7 +99,7 @@ export default function MenuItem(menuItem) {
                         onChange={ev => handleExtraThingClick(ev, extraThing)}
                         checked={selectedExtras.map(e => e._id).includes(extraThing._id)}
                         name={extraThing.name} />
-                      {extraThing.name} +${extraThing.price}
+                      {extraThing.name} +{extraThing.price}&nbps;&#8363
                     </label>
                   ))}
                 </div>
@@ -111,13 +110,13 @@ export default function MenuItem(menuItem) {
                 src={image}>
                 <div className="primary sticky bottom-2"
                      onClick={handleAddToCartButtonClick}>
-                  Add to cart ${selectedPrice}
+                  Thêm vào giỏ hàng{selectedPrice}&nbps;&#8363
                 </div>
               </FlyingButton>
               <button
                 className="mt-2"
                 onClick={() => setShowPopup(false)}>
-                Cancel
+                Hủy
               </button>
             </div>
           </div>

@@ -8,11 +8,13 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 
 function AuthLinks({ status, userName }) {
+  // console.log(status + "test");
+  
   if (status === 'authenticated') {
     return (
       <>
         <Link href={'/profile'} className="whitespace-nowrap">
-          Hello, {userName}
+          Chào, {userName}
         </Link>
         <button
           onClick={() => signOut()}
@@ -37,6 +39,8 @@ function AuthLinks({ status, userName }) {
 export default function Header() {
   const session = useSession();
   const status = session?.status;
+  // console.log(session); // check session
+  
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email.substring(0, userData.email.indexOf("@"));
   const { cartProducts } = useContext(CartContext);
@@ -81,7 +85,7 @@ export default function Header() {
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link className="text-green-700 font-semibold text-2xl flex flex-row gap-1 justify-center items-center" href={'/'}>
             <Image
-              src='/Chef-amico.png'
+              src='/hero-amthuc-mon-11.png'
               alt="logo"
               width={70}
               height={70}

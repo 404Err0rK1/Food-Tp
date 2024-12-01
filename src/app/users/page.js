@@ -18,11 +18,11 @@ export default function UsersPage() {
   }, []);
 
   if (loading) {
-    return 'Loading user info...';
+    return 'Đang tải thông tin...';
   }
 
   if (!data.admin) {
-    return 'Not an admin';
+    return 'Không phải là quản trị viên';
   }
 
   return (
@@ -36,13 +36,13 @@ export default function UsersPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 grow">
               <div className="text-gray-900">
                 {!!user.name && (<span>{user.name}</span>)}
-                {!user.name && (<span className="italic">No name</span>)}
+                {!user.name && (<span className="italic">Chưa đặt tên</span>)}
               </div>
-              <span className="text-gray-500">{user.email}</span>
+              <span className="text-gray-500 max-sm:truncate">{user.email}</span>
             </div>
             <div>
-              <Link className="button" href={'/users/'+user._id}>
-                Edit
+              <Link className="button min-w-[150px]" href={'/users/'+user._id}>
+                Chỉnh sửa
               </Link>
             </div>
           </div>

@@ -1,22 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { getStorage, ref, uploadBytesResumable, listAll, getDownloadURL } from "firebase/storage"
-import { v4 } from "uuid"
 import { app } from "../../libs/firebase"
 
 
 export default function EditableImage({ link, setLink }) {
-  const [img, setImg] = useState(null);
-  const [imgUrl, setImgUrl] = useState()
+  const [imgUrl, setImgUrl] = useState(link || '')
 
   async function handleFileChange(ev) {
     // setImg(ev.target.files[0])
     let file = ev.target.files[0]
-    let urlFile = null;
-    // setImg(a)
-    // console.log(img);
+
 
     if (file !== null) {
       // const file = ev.target.files[0]
@@ -77,8 +72,8 @@ export default function EditableImage({ link, setLink }) {
     //=========== post img ========== 
   }
   useEffect(() => {
-   setLink(imgUrl)
-  }, [link,imgUrl])
+    setLink(imgUrl)
+  }, [link, imgUrl])
   return (
     <>
       {link && (

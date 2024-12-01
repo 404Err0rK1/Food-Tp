@@ -22,6 +22,8 @@ export default function ProfilePage() {
   useEffect(() => {
     if (status === 'authenticated') {
       fetch('/api/profile').then(response => {
+        console.log(response.status);
+        
         response.json().then(data => {
           setUser(data);
           setIsAdmin(data.admin);
@@ -47,15 +49,15 @@ export default function ProfilePage() {
     });
 
     await toast.promise(savingPromise, {
-      loading: 'Saving...',
-      success: 'Profile saved!',
-      error: 'Error',
+      loading: 'Đang lưu...',
+      success: 'Thông tin đã được lưu!',
+      error: 'Lỗi',
     });
 
   }
 
   if (status === 'loading' || !profileFetched) {
-    return 'Loading...';
+    return 'Đang tải...';
   }
 
   if (status === 'unauthenticated') {

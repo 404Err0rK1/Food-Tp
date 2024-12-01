@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export const CartContext = createContext({});
 
 export function cartProductPrice(cartProduct) {
-  let price = cartProduct.basePrice;
+  let price = parseFloat(cartProduct.basePrice.replace(/\./g, ''));
   if (cartProduct.size) {
     price += cartProduct.size.price;
   }
@@ -41,7 +41,7 @@ export function AppProvider({children}) {
       saveCartProductsToLocalStorage(newCartProducts);
       return newCartProducts;
     });
-    toast.success('Product removed');
+    toast.success('Đã xóa');
   }
 
   function saveCartProductsToLocalStorage(cartProducts) {

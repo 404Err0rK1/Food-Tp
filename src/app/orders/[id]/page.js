@@ -38,10 +38,10 @@ export default function OrderPage() {
   return (
     <section className="max-w-2xl mx-auto mt-8">
       <div className="text-center">
-        <SectionHeaders mainHeader="Your order" />
+        <SectionHeaders mainHeader="Đơn hàng của bạn" />
         <div className="mt-4 mb-8">
-          <p>Thanks for your order.</p>
-          <p>We will call you when your order will be on the way.</p>
+          <p>Cảm ơn bạn đã đặt thực đơn</p>
+          <p>Chúng tôi sẽ thông báo với bạn khi thực đơn được vận chuyển.</p>
         </div>
       </div>
       {loadingOrder && (
@@ -54,15 +54,15 @@ export default function OrderPage() {
               <CartProduct key={product._id} product={product} />
             ))}
             <div className="text-right py-2 text-gray-500">
-              Subtotal:
-              <span className="text-black font-bold inline-block w-8">${subtotal}</span>
+              Giá thực đơn:
+              <span className="text-black font-bold inline-block w-8">{subtotal}&nbps;&#8363;</span>
               <br />
-              Delivery:
-              <span className="text-black font-bold inline-block w-8">$5</span>
+              Phí vận chuyển:
+              <span className="text-black font-bold inline-block w-8">10.000&nbps;&#8363;</span>
               <br />
-              Total:
+              Thanh toán:
               <span className="text-black font-bold inline-block w-8">
-                ${subtotal + 5}
+                {(subtotal + 10000).toLocaleString('vi-VN')}&nbps;&#8363;
               </span>
             </div>
           </div>

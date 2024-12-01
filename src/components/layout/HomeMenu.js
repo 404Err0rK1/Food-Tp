@@ -10,7 +10,7 @@ export default function HomeMenu() {
     fetch('/api/menu-items').then(res => {
       res.json().then(menuItems => {
         setBestSellers(menuItems.slice(-3));
-        console.log(menuItems);
+        // console.log(menuItems);
       });
     });
   }, []);
