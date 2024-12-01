@@ -113,13 +113,13 @@ export default function CartPage() {
           </div>
         </div>
         <div className="bg-gray-100 p-4 rounded-lg">
-          <h2>Checkout</h2>
+          <h2>Thanh toán</h2>
           <form onSubmit={proceedToCheckout}>
             <AddressInputs
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit">Pay ${(subtotal+10000).toLocaleString('vi-VN')}</button>
+            <button type="submit">Thanh toán {(subtotal+10000).toLocaleString('vi-VN')} &#8363;</button>
           </form>
         </div>
       </div>

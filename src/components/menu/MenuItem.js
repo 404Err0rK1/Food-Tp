@@ -1,12 +1,12 @@
-import {CartContext} from "@/components/AppContext";
+import { CartContext } from "@/components/AppContext";
 import MenuItemTile from "@/components/menu/MenuItemTile";
 import Image from "next/image";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import FlyingButton from "react-flying-item";
 
 export default function MenuItem(menuItem) {
   const {
-    image,name,description,basePrice,
+    image, name, description, basePrice,
     sizes, extraIngredientPrices,
   } = menuItem;
   const [
@@ -14,7 +14,7 @@ export default function MenuItem(menuItem) {
   ] = useState(sizes?.[0] || null);
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-  const {addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   async function handleAddToCartButtonClick() {
     // console.log('add to cart');
@@ -39,13 +39,13 @@ export default function MenuItem(menuItem) {
     }
   }
 
-  let selectedPrice = basePrice;
+  let selectedPrice = parseInt(basePrice.replace(/\./g, ''));
   if (selectedSize) {
-    selectedPrice += selectedSize.price;
+    selectedPrice += parseInt(selectedSize.price.replace(/\./g, ''));
   }
   if (selectedExtras?.length > 0) {
     for (const extra of selectedExtras) {
-      selectedPrice += extra.price;
+      selectedPrice += parseInt(extra.price.replace(/\./g, ''));
     }
   }
 
@@ -60,7 +60,7 @@ export default function MenuItem(menuItem) {
             className="my-8 bg-white p-2 rounded-lg max-w-md">
             <div
               className="overflow-y-scroll p-2"
-              style={{maxHeight:'calc(100vh - 100px)'}}>
+              style={{ maxHeight: 'calc(100vh - 100px)' }}>
               <Image
                 src={image}
                 alt={name}
@@ -81,8 +81,8 @@ export default function MenuItem(menuItem) {
                         type="radio"
                         onChange={() => setSelectedSize(size)}
                         checked={selectedSize?.name === size.name}
-                        name="size"/>
-                      {size.name} ${basePrice + size.price}
+                        name="size" />
+                      {size.name} {(parseInt(basePrice.replace(/\./g, '')) + parseInt(size.price.replace(/\./g, ''))).toLocaleString('vi-VN')} &#8363;
                     </label>
                   ))}
                 </div>
@@ -99,7 +99,7 @@ export default function MenuItem(menuItem) {
                         onChange={ev => handleExtraThingClick(ev, extraThing)}
                         checked={selectedExtras.map(e => e._id).includes(extraThing._id)}
                         name={extraThing.name} />
-                      {extraThing.name} +{extraThing.price}&nbps;&#8363
+                      {extraThing.name} +{parseInt(extraThing.price.replace(/\./g, '')).toLocaleString('vi-VN')} &#8363;
                     </label>
                   ))}
                 </div>
@@ -109,8 +109,8 @@ export default function MenuItem(menuItem) {
                 targetLeft={'95%'}
                 src={image}>
                 <div className="primary sticky bottom-2"
-                     onClick={handleAddToCartButtonClick}>
-                  Thêm vào giỏ hàng{selectedPrice}&nbps;&#8363
+                  onClick={handleAddToCartButtonClick}>
+                  Thêm vào giỏ hàng {selectedPrice.toLocaleString('vi-VN')} &#8363;
                 </div>
               </FlyingButton>
               <button

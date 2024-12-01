@@ -6,13 +6,13 @@ import toast from "react-hot-toast";
 export const CartContext = createContext({});
 
 export function cartProductPrice(cartProduct) {
-  let price = parseFloat(cartProduct.basePrice.replace(/\./g, ''));
+  let price = parseInt(cartProduct.basePrice.replace(/\./g, ''));
   if (cartProduct.size) {
-    price += cartProduct.size.price;
+    price += parseInt(cartProduct.size.price.replace(/\./g, ''));
   }
   if (cartProduct.extras?.length > 0) {
     for (const extra of cartProduct.extras) {
-      price += extra.price;
+      price += parseInt(extra.price.replace(/\./g, ''));
     }
   }
   return price;

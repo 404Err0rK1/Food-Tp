@@ -45,7 +45,7 @@ export default function OrderPage() {
         </div>
       </div>
       {loadingOrder && (
-        <div>Loading order...</div>
+        <div>Đang tải...</div>
       )}
       {order && (
         <div className="grid md:grid-cols-2 md:gap-16">
