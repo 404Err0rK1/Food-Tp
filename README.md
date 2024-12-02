@@ -1,23 +1,41 @@
 # Food Ordering
+
 Building a food ordering website, including components and features: a homepage, authentication, profile editing page, admin panel
-(categories, menu items, users), listing products, menu items, and cart page 
+(categories, menu items, users), listing products, menu items, and cart page
 
 💻 Admin: authentication, products management, categories management, security.
 
-💻 Client:  featured products, latest products, add-to-card, stripe checkout, show orders, all products page, single product page.
-
+💻 Client: featured products, latest products, add-to-card, stripe checkout, show orders, all products page, single product page.
 
 # 💻 Tech:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(118).png?alt=media&token=b4d9903f-e855-4c11-aedc-bb7da0b79127" />
-# 🤖 Log - Register
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(122).png?alt=media&token=7df5fd58-bb2d-476f-9fb3-c9036201616c" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(121).png?alt=media&token=798d8399-f273-435b-b816-09bce8612760" />
+<img align="center" alt="Coding" width="100%" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 181056.png" />
+
+<br/>
+
+# 🤖 Đăng nhập | Đăng ký
+
+### Đăng ký
+
+<p>Màn hình đăng ký</p>
+<img align="center" alt="Coding" width="100%" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 181105.png" /> 
+
+<br/>
+
+<p>Đăng ký tài khoản với email và mật khẩu</p>
+<img align="center" alt="Coding" width="fix-content" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 190409.png" />
+
+<br/>
+
+<p>Đăng ký thành công</p>
+
+<br/>
+
+
 
 # 🤖 Roll Admin
 
@@ -39,4 +57,3 @@ Building a food ordering website, including components and features: a homepage,
 
 <img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(132).png?alt=media&token=fee4f9fa-0ca1-4da9-9321-a8f0e443e565" />
 <img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(133).png?alt=media&token=c3bbe08c-873c-4266-b4d7-25ca037f8db0" />
-

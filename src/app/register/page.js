@@ -67,7 +67,7 @@ export default function RegisterPage() {
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
           Bạn đã có tài khoản?{' '}
-          <Link className="underline" href={'/login'}>Login here &raquo;</Link>
+          <Link className="underline" href={'/login'}>Đăng nhập &raquo;</Link>
         </div>
       </form>
     </section>
