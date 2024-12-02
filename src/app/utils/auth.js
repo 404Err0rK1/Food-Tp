@@ -12,6 +12,10 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter"
 export const authOptions = {
     secret: process.env.SECRET,
     adapter: MongoDBAdapter(clientPromise),
+    session: {
+      // Set it as jwt instead of database
+      strategy: "jwt",
+    },
     providers: [
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
@@ -26,7 +30,7 @@ export const authOptions = {
         },
         async authorize(credentials, req) {
           // if(credentials){
-          // console.log(credentials) //check credentials
+          console.log(credentials) //check credentials
           // }
           const email = credentials?.email;
           const password = credentials?.password;

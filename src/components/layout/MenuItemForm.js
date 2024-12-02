@@ -10,7 +10,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
   const [description, setDescription] = useState(menuItem?.description || '');
   const [basePrice, setBasePrice] = useState(menuItem?.basePrice || '');
   const [sizes, setSizes] = useState(menuItem?.sizes || []);
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [
     extraIngredientPrices,
@@ -54,6 +54,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           />
           <label>Danh mục</label>
           <select value={category} onChange={ev => setCategory(ev.target.value)}>
+            <option value="">Chọn danh mục</option>
             {categories?.length > 0 && categories.map(c => (
               <option key={c._id} value={c._id}>{c.name}</option>
             ))}

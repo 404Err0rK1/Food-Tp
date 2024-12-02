@@ -22,7 +22,6 @@ export default function MenuPage() {
       );
     });
   }, []);
-  console.log(menuItems);
   
   return (
     <section className="mt-8">

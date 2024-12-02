@@ -11,7 +11,7 @@ export default function AddToCartButton({
           targetLeft={'95%'}
           src={image}>
           <div onClick={onClick}>
-          Thêm vào giỏ hàng {basePrice}&nbsp;&#8363;
+          Thêm vào giỏ hàng {basePrice} &#8363;
           </div>
         </FlyingButton>
       </div>
@@ -21,9 +21,9 @@ export default function AddToCartButton({
     <button
       type="button"
       onClick={onClick}
-      className="mt-4 bg-primary text-white rounded-full px-8 py-2"
+      className="mt-4 bg-primary text-white rounded-full px-8 py-2 whitespace-nowrap"
     >
-      <span>Thêm vào giỏ hàng {basePrice}&nbsp;&#8363;</span>
+      <span>Thêm vào giỏ hàng {basePrice} &#8363;</span>
     </button>
   );
 }

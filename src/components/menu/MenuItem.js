@@ -57,9 +57,9 @@ export default function MenuItem(menuItem) {
           className="fixed inset-0 bg-black/80 flex items-center justify-center">
           <div
             onClick={ev => ev.stopPropagation()}
-            className="my-8 bg-white p-2 rounded-lg max-w-md">
+            className="my-8 bg-white p-2 rounded-md max-w-md">
             <div
-              className="overflow-y-scroll p-2"
+              className="overflow-y-scroll p-2 scrollbar-component"
               style={{ maxHeight: 'calc(100vh - 100px)' }}>
               <Image
                 src={image}

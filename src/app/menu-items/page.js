@@ -1,15 +1,15 @@
 'use client';
 import Right from "@/components/icons/Right";
 import UserTabs from "@/components/layout/UserTabs";
-import {useProfile} from "@/components/UseProfile";
+import { useProfile } from "@/components/UseProfile";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function MenuItemsPage() {
 
   const [menuItems, setMenuItems] = useState([]);
-  const {loading, data} = useProfile();
+  const { loading, data } = useProfile();
 
   useEffect(() => {
     fetch('/api/menu-items').then(res => {
@@ -44,16 +44,21 @@ export default function MenuItemsPage() {
           {menuItems?.length > 0 && menuItems.map(item => (
             <Link
               key={item._id}
-              href={'/menu-items/edit/'+item._id}
-              className="bg-gray-200 rounded-lg p-4"
+              href={'/menu-items/edit/' + item._id}
+              className="bg-gray-100 border border-gray-300 rounded-lg flex flex-col"
             >
-              <div className="relative">
+              <div className="relative h-[75%]">
                 <Image
-                  className="rounded-md"
-                  src={item.image} alt={''} width={200} height={200} />
+                  className="rounded-sm object-cover"
+                  src={item.image} alt={''} width={200} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <div className="text-center">
-                {item.name}
+              <div className="h-[25%]">
+                <div className="text-center mt-2">
+                  {item.name}
+                </div>
+                <div className="text-center text-sm text-gray-500">
+                  {item.description}
+                </div>
               </div>
             </Link>
           ))}
