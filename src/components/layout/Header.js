@@ -13,7 +13,7 @@ function AuthLinks({ status, userName }) {
   if (status === 'authenticated') {
     return (
       <>
-        <Link href={'/profile'} className="whitespace-nowrap">
+        <Link href={'/profile'} className="whitespace-nowrap text-ellipsis w-[90px] overflow-clip">
           Chào, {userName}
         </Link>
         <button
@@ -42,7 +42,7 @@ export default function Header() {
   // console.log(session); // check session
   
   const userData = session.data?.user;
-  let userName = userData?.name || userData?.email.substring(0, userData.email.indexOf("@"));
+  let userName = userData?.name || userData?.email;
   const { cartProducts } = useContext(CartContext);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   if (userName && userName.includes(' ')) {
