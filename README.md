@@ -13,7 +13,7 @@ Building a food ordering website, including components and features: a homepage,
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
-<img align="center" alt="Coding" width="100%" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 181056.png" />
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 191108.png" />
 
 <br/>
 
@@ -21,38 +21,159 @@ Building a food ordering website, including components and features: a homepage,
 
 ### Đăng ký
 
-<p>Màn hình đăng ký</p>
-<img align="center" alt="Coding" width="100%" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 181105.png" /> 
-
-<br/>
-
-<p>Đăng ký tài khoản với email và mật khẩu</p>
-<img align="center" alt="Coding" width="fix-content" height="400px" src="./screen/Ảnh chụp màn hình 2024-12-02 190409.png" />
+<p>Màn hình đăng ký: có thể đăng ký bằng user/password </p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 192232.png" />
 
 <br/>
 
 <p>Đăng ký thành công</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 192241.png" />
 
 <br/>
 
+<p>Đăng ký xảy ra lỗi</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 192250.png" />
+
+<br/>
+
+<p>Màn hình đăng nhập: đăng nhập thông qua user/password hoặc đăng nhập bằng dịch vụ Google</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 192432.png" />
+
+<br/>
+
+<p>Đăng nhập thành công</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 193624.png" />
+
+<br/>
+
+<p>Next auth | Oauth Google</p>
+
+```
+//src\app\utils\auth.js
+
+export const authOptions = {
+    secret: process.env.SECRET,
+    adapter: MongoDBAdapter(clientPromise),
+    session: {
+      // Set it as jwt instead of database
+      strategy: "jwt",
+    },
+    providers: [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      }),
+      CredentialsProvider({
+        name: 'Credentials',
+        id: 'credentials',
+        credentials: {
+          username: { label: "Email", type: "email", placeholder: "email@example.com" },
+          password: { label: "Password", type: "password" },
+        },
+        async authorize(credentials, req) {
+          // if(credentials){
+          console.log(credentials) //check credentials
+          // }
+          const email = credentials?.email;
+          const password = credentials?.password;
+
+          mongoose.connect(process.env.MONGO_URL);
+          const user = await User.findOne({ email });
+
+          const passwordOk = user && bcrypt.compareSync(password, user.password);
+          if (passwordOk) {
+            console.log(user)
+            return user;
+          }
+
+          return null
+        }
+      })
+    ],
+
+  };
+```
+
+```
+//src\app\api\auth\[...nextauth]\route.js
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST }
+```
+
+<p>Kiểm tra quản trị viên?</p>
+
+```
+export async function isAdmin() {
+    const session = await getServerSession(authOptions);
+    const userEmail = session?.user?.email;
+
+    if (!userEmail) {
+
+      return false;
+    }
+    const userInfo = await UserInfo.findOne({ email: userEmail });
+    if (!userInfo) {
+
+      return false;
+    }
+    // console.log(userInfo.admin); //test value admin
+
+    return userInfo.admin;
+  }
+```
+
+# 🤖 Các thành phần trang chủ
+
+<p>Header</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 195927.png" />
+
+<br/>
+
+<p>Phần giới thiệu</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 200427.png" />
+
+<br/>
+
+<p>Món ăn được ưa thích và mua nhiều nhất (hiển thị 3 món ăn đứng đầu)</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 200623.png" />
+
+<br/>
+
+<p>Thành phần: Món ăn</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 201844.png" />
+
+<br/>
+
+<p>Khi tương tác (click) vào nút thêm vào giỏ hàng tại các sản phầm ở mục món ăn được ưa thích nhất</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 201510.png" />
+
+<br/>
+
+<p>Bảng chọn kích thước và thành phần ăn phụ kèm món ăn theo được bật lên trước khi xác nhận mua</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 202619.png" />
+
+<p>Code xử lý giá tiền theo chuẩn VND: tại đây giá tiền sẽ được lưu theo kiểu String và khi cần xử lý về mặt toán học sẽ đổi thành Number</p>
+
+```
+Number(value).toLocaleString("vi-VN") // Number -> String (format xxx.xxx.xxx vnd)
+```
+
+<br/>
+
+<p>Về chúng tôi</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 200826.png" />
+
+<br/>
 
 # 🤖 Roll Admin
 
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(127).png?alt=media&token=21d3f60f-17c9-49a9-a3d7-900e8e773cf6" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(128).png?alt=media&token=a45cc649-5791-4cc4-a10f-02aba393ccad" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(129).png?alt=media&token=09f65a00-5466-4a3f-99aa-913632bf51da" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(130).png?alt=media&token=a2fdeecb-8191-4bec-9552-f79951a5f09d" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(131).png?alt=media&token=2502c81b-0569-42f9-9ba4-d0fa681479af" />
+<p>comming soon</p>
 
 # 🖥📲 Roll Client
 
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(123).png?alt=media&token=a7d784c5-0e50-4178-9cb3-f7a966665071" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(124).png?alt=media&token=5ccd0634-52d0-4c9c-ae9b-a910c7d72c81" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(125).png?alt=media&token=a319cf60-30ad-4d3b-89c3-dad88d405491" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(126).png?alt=media&token=d42f029a-c010-4572-a026-f32da4f80a62" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(125).png?alt=media&token=a319cf60-30ad-4d3b-89c3-dad88d405491" />
+<p>comming soon</p>
 
 # 🖥📲 Cluster Database (MongoDB)
 
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(132).png?alt=media&token=fee4f9fa-0ca1-4da9-9321-a8f0e443e565" />
-<img align="center" alt="Coding" width="fix-content" height="400px" src="https://firebasestorage.googleapis.com/v0/b/storage-image-1f22f.appspot.com/o/food-odering%2FScreenshot%20(133).png?alt=media&token=c3bbe08c-873c-4266-b4d7-25ca037f8db0" />
+<p>comming soon</p>
