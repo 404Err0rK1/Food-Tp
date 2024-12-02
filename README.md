@@ -145,7 +145,7 @@ export async function isAdmin() {
 
 <br/>
 
-<p>Khi tương tác (click) vào nút thêm vào giỏ hàng tại các sản phầm ở mục món ăn được ưa thích nhất</p>
+<p>Khi click vào button thêm vào giỏ hàng tại các sản phầm ở mục món ăn được ưa thích nhất</p>
 <img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 201510.png" />
 
 <br/>
@@ -153,24 +153,99 @@ export async function isAdmin() {
 <p>Bảng chọn kích thước và thành phần ăn phụ kèm món ăn theo được bật lên trước khi xác nhận mua</p>
 <img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 202619.png" />
 
+<br/>
+
 <p>Code xử lý giá tiền theo chuẩn VND: tại đây giá tiền sẽ được lưu theo kiểu String và khi cần xử lý về mặt toán học sẽ đổi thành Number</p>
 
 ```
-Number(value).toLocaleString("vi-VN") // Number -> String (format xxx.xxx.xxx vnd)
-```
+&#8363;// ký tự đ
 
-<br/>
+Number(value).toLocaleString("vi-VN") // Number -> String (format xxx.xxx.xxx vnd)
+
+parseInt(cartProduct.basePrice.replace(/\./g, ''));// String -> Number (ex: 30.000 -> 30000)
+```
 
 <p>Về chúng tôi</p>
 <img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 200826.png" />
 
 <br/>
 
-# 🤖 Roll Admin
-
-<p>comming soon</p>
-
 # 🖥📲 Roll Client
+
+<p>Khi người dùng đăng nhập thành công trang sẽ quay về màn hình trang chủ. lúc này người dùng cần thực hiện cập nhập thông tin cá nhân.</p>
+
+<p>Code xử lý: trường hợp người dùng đăng nhập bằng userName/password và chưa có tên để hiển thị vào liên kết "Chào,[text] sẽ là userName(chưa qua xử lý [có thể rất dài])"</p>
+
+```
+//component src\components\layout\Header.js
+...
+let userName = userData?.name || userData?.email;// from session
+...
+<Link href={'/profile'} className="whitespace-nowrap text-ellipsis w-[90px] overflow-clip">
+  Chào, {userName}
+</Link>
+```
+
+<p>Người dùng sẽ (click) vào liên kết "Chào,[text]", và di duyển đến tap hồ sơ</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 233135.png" />
+
+<br/>
+
+<p>Điền thông tin người dùng</p>
+<p>Avatar sẽ được tại stogare của Firebase -> sau đó trả link ảnh về client. Tất cả thông tin lúc này sẽ được lưu trên DB mongoDB khi người dùng click vào button lưu</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 234730.png" />
+
+<br/>
+
+<p>Di duyển đến tap thực đơn để tiến hành lựa chọn món ăn cần mua</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-02 235802.png" />
+
+<br/>
+
+<p>khi click vào button thêm vào giỏ hàng một popup sẽ được kích hoạt lên. Tại đây tiến hành lựa chọn các option mong muốn và thêm vào giỏ hàng</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-03 000111.png" />
+
+<br/>
+
+<p>Sau khi món ăn đã được thêm vào giỏ hàng, bạn di chuyển đến tap có biểu tượng shop trên header để kiểm tra</p>
+<img align="center" alt="Coding" width="fit-content" height="fit-content" src="./screen/Ảnh chụp màn hình 2024-12-03 000340.png" />
+
+<br/>
+
+<p>Code xử lý load thông tin tại col trái</p>
+
+```
+//xem đầy đủ tại: src\app\cart\page.js
+
+//prop sẽ được truyền từ componet cha
+
+export default function AddressInputs({addressProps,setAddressProp,disabled=false}) {
+  const {phone, streetAddress, postalCode, city, country} = addressProps;
+  return (
+    <>
+      <label> Số điện thoại</label>
+      <input
+        disabled={disabled}
+        type="tel" placeholder="Số điện thoại"
+        value={phone || ''} onChange={ev => setAddressProp('phone', ev.target.value)} />
+      <label>Địa chỉ</label>
+      ....
+ <input
+        disabled={disabled}
+        type="text" placeholder="Thành phố/Tỉnh thành"
+        value={country || ''} onChange={ev => setAddressProp('country', ev.target.value)}
+      />
+    </>
+  );
+}
+```
+
+<br/>
+
+<p>Hiện tại ứng dụng sử dụng thanh Stripe</p>
+
+
+# 🤖 Roll Admin
 
 <p>comming soon</p>
 
